@@ -14,6 +14,12 @@ jobs:
       - name: 'Sjekk ut koden 2.0'
         uses: actions/checkout@v4
 
+      - name: Ensure in git directory
+        run: git rev-parse --is-inside-work-tree
+
+      - name: Repo Visualizer
+        uses: githubocto/repo-visualizer@0.9.1
+
       # Oppgave 3: Sette opp riktig .net versjon før bygging (Denne er gjort feridg for dere)
       - name: Setup DotNet Environment
         uses: actions/setup-dotnet@v4

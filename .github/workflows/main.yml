@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - 'main'
+
+env:
+  AZURE_FUNCTIONAPP_NAME: 'github-fagdag-ruben-test' # For Oppgave 8: Sett inn navn på din egen Azure function app
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # Function app path (denne trenger du ikke endre)
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    steps:
+    - name: Repo Visualizer
+      uses: githubocto/repo-visualizer@0.9.1
+            

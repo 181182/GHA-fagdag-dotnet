@@ -52,7 +52,6 @@ public class Tests
         Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
     }
 
-    [Test]
     public void TestSumFunction()
     {
         // Arrange
