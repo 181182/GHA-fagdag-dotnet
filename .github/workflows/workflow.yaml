@@ -11,7 +11,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Sjekk ut koden'
+      - name: 'Sjekk ut koden 2.0'
         uses: actions/checkout@v4
 
       # Oppgave 3: Sette opp riktig .net versjon før bygging (Denne er gjort feridg for dere)

@@ -49,3 +49,35 @@ Pga muligens lite tid, er oppgave 2 og 3 gjort ferdig for dere.
 Mer informasjon om bygging og testing av .net prosjekter med Github actions: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-net
 
 Eksempel på workflow fil for å deploye C# .net core til Azure function app (Men eldre .net versjon): https://github.com/Azure/actions-workflow-samples/blob/master/FunctionApp/windows-dotnet-functionapp-on-azure.yml 
+
+## Purpose of the Project
+
+This project is a small C# .NET Core solution that includes an Azure Function app and a test project. The main purpose of the project is to demonstrate the use of GitHub Actions for building, testing, and deploying a .NET Core application.
+
+## Running the Tests
+
+To run the tests in this project, follow these steps:
+
+1. Ensure you have the .NET SDK installed on your machine. You can download it from the [official .NET website](https://dotnet.microsoft.com/download).
+
+2. Open a terminal or command prompt and navigate to the root directory of the project.
+
+3. Run the following command to restore the project dependencies:
+
+   ```sh
+   dotnet restore
+   ```
+
+4. Run the following command to build the project:
+
+   ```sh
+   dotnet build
+   ```
+
+5. Run the following command to execute the tests:
+
+   ```sh
+   dotnet test
+   ```
+
+The test results will be displayed in the terminal or command prompt.

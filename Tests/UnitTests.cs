@@ -24,11 +24,23 @@ public class Tests
     }
 
     [Test]
-    public void TestWithIncorrectExpectedSum()
+    public void TestSomDetKanskjeErNoeGaltMed()
     {
         int a = 4;
         int b = 1;
         int expected = 5;
+
+        int sum = Kalkulator.Sum(a, b);
+
+        Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
+    }
+
+    [Test]
+    public void TestNegativeNumbers()
+    {
+        int a = -3;
+        int b = -7;
+        int expected = -10;
 
         int sum = Kalkulator.Sum(a, b);
 
