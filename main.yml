@@ -1,0 +1,45 @@
+on:
+  push:
+    branches:
+      - 'main'
+
+env:
+  AZURE_FUNCTIONAPP_NAME: 'github-fagdag-ruben-test' # For Oppgave 8: Sett inn navn på din egen Azure function app
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # Function app path (denne trenger du ikke endre)
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    steps:
+    - name: Repo Visualizer
+      uses: githubocto/repo-visualizer@0.9.1
+
+    - name: 'Sjekk ut koden 2.0'
+      uses: actions/checkout@v4
+
+    - name: Setup DotNet Environment
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Build the project
+      run: dotnet build --configuration Release --output ./output
+
+    - name: Run tests
+      run: dotnet test --verbosity minimal
+
+    - name: Check for vulnerable nuget dependencies
+      run: dotnet list package --vulnerable
+
+    - name: Install dotnet-format tool
+      run: dotnet tool install -g dotnet-format
+
+    - name: Run dotnet format tool (lint the code)
+      run: dotnet format --verify-no-changes
+
+    - name: 'Deploy til Azure Functions app'
+      uses: Azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
