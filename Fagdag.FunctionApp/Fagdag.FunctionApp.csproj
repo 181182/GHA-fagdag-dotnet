@@ -31,4 +31,10 @@
     <ItemGroup>
         <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext"/>
     </ItemGroup>
+    <Target Name="CheckVulnerablePackages" AfterTargets="Build">
+        <Exec Command="dotnet list package --vulnerable" ContinueOnError="true">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+        </Exec>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="Vulnerable packages found." />
+    </Target>
 </Project>
