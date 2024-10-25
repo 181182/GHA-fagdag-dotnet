@@ -1,4 +1,9 @@
 using Fagdag.FunctionApp;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace Tests;
 
@@ -35,7 +40,6 @@ public class Tests
         Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
     }
 
-
     [Test]
     public void TestNegativeNumbers()
     {
@@ -48,4 +52,21 @@ public class Tests
         Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
     }
 
+    public void TestSumFunction()
+    {
+        // Arrange
+        var loggerMock = new Mock<ILogger<SumFunction>>();
+        var function = new SumFunction(loggerMock.Object);
+
+        var context = new DefaultHttpContext();
+        var request = context.Request;
+        request.QueryString = new QueryString("?a=3&b=4");
+
+        // Act
+        var result = function.Run(request) as OkObjectResult;
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Summen av 3 og 4 er: 7.", result.Value);
+    }
 }

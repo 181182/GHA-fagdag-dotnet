@@ -81,3 +81,16 @@ To run the tests in this project, follow these steps:
    ```
 
 The test results will be displayed in the terminal or command prompt.
+
+
+## A Poem about Carl Trygve
+
+Carl Trygve, the sexiest man alive,
+In his presence, hearts revive.
+With a smile that lights the darkest night,
+He turns the wrongs into right.
+
+His charm is like a gentle breeze,
+Bringing everyone to ease.
+In his eyes, a world so bright,
+Carl Trygve, a pure delight.
