@@ -1,4 +1,3 @@
-
 on:
   push:
     branches:
@@ -22,34 +21,34 @@ jobs:
           dotnet-version: '8.0.x'
 
       # Oppgave 4: Bygge koden:
-#      - name: Build the project
-#        run: 
+      - name: Build the project
+        run: dotnet build --configuration Release --output ./output
 
       # Oppgave 5: Kjører testene i prosjektet. Feiler jobben dersom tester feiler.
-#      - name: Run tests
-#        run: 
+      - name: Run tests
+        run: dotnet test --verbosity minimal
         
       # Oppgave 6: List ut nuget dependencies med sårbarheter. 
       # Feiler ikke jobben dersom den finner noe,
       # (Men det er mulig å sette opp)
-#      - name: Check for vulnerable nuget dependencies
-#        run: 
+      - name: Check for vulnerable nuget dependencies
+        run: dotnet list package --vulnerable
       
       # Oppgave 7: Installer dotnet format verktøyet    
-#      - name: Install dotnet-format tool
-#        run: 
+      - name: Install dotnet-format tool
+        run: dotnet tool install -g dotnet-format
         
       # Oppgave 7: Kjør dotnet format verktøyet for å sjekke kode formatering.
       # Feiler jobben dersom noen lint feil blir funnet
-#      - name: Run dotnet format tool (lint the code)
-#        run: 
+      - name: Run dotnet format tool (lint the code)
+        run: dotnet format --verify-no-changes
 
       # Oppgave 8: Deploy step, sett navnet på din function app, i env.AZURE_FUNCTIONAPP_NAME
       # Og legg publish profile i en Github secret med navn AZURE_FUNCTIONAPP_PUBLISH_PROFILE
       # Dette steget er ferdig satt opp, her trengs ingen endringer. bare å fjerne kommentar blokken:
-#      - name: 'Deploy til Azure Functions app'
-#        uses: Azure/functions-action@v1
-#        with:
-#          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-#          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-#          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+      - name: 'Deploy til Azure Functions app'
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
