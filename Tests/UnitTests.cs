@@ -18,7 +18,7 @@ public class Tests
         int b = 5;
         int expected = 17;
 
-        int sum = Kalkulator.sum(a, b);
+        int sum = Kalkulator.Sum(a, b);
 
         Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
     }
@@ -28,9 +28,9 @@ public class Tests
     {
         int a = 4;
         int b = 1;
-        int expected = 9;
+        int expected = 5;
 
-        int sum = Kalkulator.sum(a, b);
+        int sum = Kalkulator.Sum(a, b);
 
         Assert.That(Equals(expected, sum), $"Forventet sum: {expected}, men sum var: {sum}");
     }

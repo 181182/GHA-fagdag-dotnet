@@ -46,6 +46,6 @@ Pga muligens lite tid, er oppgave 2 og 3 gjort ferdig for dere.
 - Oppgave 5, 6 eller 7 kan skippes, dersom du har problemer med en av de (bare kommenter ut eller fjern de fra workflow filen), eller vil forsøke å deploye til Azure.
 
 
-Mer informasjon om bygging og testing av .net prosjekter med Github actions: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-net
+Mer informasjon om bygging og testing av .net prosjekter med Github actions: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-net 
 
 Eksempel på workflow fil for å deploye C# .net core til Azure function app (Men eldre .net versjon): https://github.com/Azure/actions-workflow-samples/blob/master/FunctionApp/windows-dotnet-functionapp-on-azure.yml 
